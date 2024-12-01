@@ -59,3 +59,34 @@ The endpoint expects a JSON object with the following fields:
   "password": "password123",
   "token":"JWT_TOKEN",
 }
+
+User Profile Endpoint
+Endpoint: /users/profile
+Description: Retrieves the profile of the authenticated user.
+
+Method: GET
+Headers:
+Key	Value
+Authorization	Bearer <JWT_TOKEN>
+Response Example:
+
+{
+  "user": {
+    "_id": "1234567890",
+    "fullName": "John Doe",
+    "email": "johndoe@example.com"
+  }
+}
+User Logout Endpoint
+Endpoint: /users/logout
+Description: Logs out the user by clearing the authentication token and blacklisting it.
+
+Method: GET
+Headers:
+Key	Value
+Authorization	Bearer <JWT_TOKEN>
+Response Example:
+
+{
+  "message": "Logged out"
+}
