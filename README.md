@@ -20,7 +20,7 @@ The endpoint expects a JSON object with the following fields:
 | `fullName`| String | Yes      | Minimum 3 characters                     |
 | `email`   | String | Yes      | Must be a valid email format             |
 | `password`| String | Yes      | Minimum 6 characters                     |
-| `token`   | String | No      | 
+| `token`   | String | No      |     - 
 #### Example:
 ```json
 {
