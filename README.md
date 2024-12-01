@@ -29,3 +29,33 @@ The endpoint expects a JSON object with the following fields:
   "password": "password123",
   "token":"JWT_TOKEN",
 }
+
+
+## Endpoint: `users/login`
+
+### Description:
+This endpoint is used to register a new user in the system. It validates the input, hashes the user's password, and stores the user data in the database.
+
+---
+
+### Method:
+`POST`
+
+---y
+
+### Request Body:
+The endpoint expects a JSON object with the following fields:
+
+| Field     | Type   | Required | Validation
+|-----------|--------|----------|               
+                   
+| `email`   | String | Yes      | Must be a valid email format             |
+| `password`| String | Yes      | Minimum 6 characters                     |
+| `token`   | String | No      |     - 
+#### Example:
+```json
+{
+  "email": "johndoe@example.com",
+  "password": "password123",
+  "token":"JWT_TOKEN",
+}
