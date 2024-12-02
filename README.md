@@ -122,6 +122,27 @@ vehicle.plate	String	Yes	Minimum 3  characters
 vehicle.capacity Number	Yes	Minimum value of 1
 vehicle.vehicleType	String	Yes	One of car, motorcycle, auto
 
+Response:
+
+201 Created:
+json
+Copy code
+{
+  "message": "Captain registered successfully",
+  "captain": {
+    "_id": "unique-id",
+    "fullname": "John Doe",
+    "email": "john@example.com",
+    "vehicle": {
+      "color": "Blue",
+      "plate": "ABC-1234",
+      "capacity": 4,
+      "vehicleType": "car"
+    },
+    "status": "inactive"
+  }
+}
+
 
 Get Captain Profile
 Endpoint: GET /profile
@@ -131,6 +152,26 @@ Headers:
 
 Key              	Value
 Authorization	   Bearer <JWT_TOKEN>
+
+Response:
+
+200 OK:
+json
+Copy code
+{
+  "captain": {
+    "_id": "unique-id",
+    "fullname": "John Doe",
+    "email": "john@example.com",
+    "vehicle": {
+      "color": "Blue",
+      "plate": "ABC-1234",
+      "capacity": 4,
+      "vehicleType": "car"
+    },
+    "status": "inactive"
+  }
+}
 
  Update Captain Status
 Endpoint: PATCH /status
@@ -149,6 +190,16 @@ Request Body:
 Field  	Type	 Required	  Validation
 status	String	Yes	    Must be either active or inactive  
 
+Response:
+
+200 OK:
+json
+Copy code
+{
+  "message": "Status updated successfully",
+  "status": "active"
+}
+
 Logout Captain
 Endpoint: GET /logout
 Description: Logs out the captain and invalidates their token.
@@ -157,3 +208,10 @@ Headers:
 
 Key	              Value
 Authorization  	Bearer <JWT_TOKEN>
+
+Response:
+
+200 OK:
+json
+Copy code
+{ "message": "Logged out successfully" }
