@@ -17,14 +17,14 @@ The endpoint expects a JSON object with the following fields:
 
 | Field     | Type   | Required | Validation                                |
 |-----------|--------|----------|------------------------------------------|
-| `fullName`| String | Yes      | Minimum 3 characters                     |
+| `fullname`| String | Yes      | Minimum 3 characters                     |
 | `email`   | String | Yes      | Must be a valid email format             |
 | `password`| String | Yes      | Minimum 6 characters                     |
 | `token`   | String | No      |     - 
 #### Example:
 ```json
 {
-  "fullName": "John Doe",
+  "fullname": "John Doe",
   "email": "johndoe@example.com",
   "password": "password123",
   "token":"JWT_TOKEN",
@@ -73,7 +73,7 @@ Response Example:
 {
   "user": {
     "_id": "1234567890",
-    "fullName": "John Doe",
+    "fullname": "John Doe",
     "email": "johndoe@example.com"
   }
 }
@@ -90,3 +90,70 @@ Response Example:
 {
   "message": "Logged out"
 }
+
+
+ Register Captain
+Endpoint: POST /register
+Description: Register a new captain, including vehicle details.
+
+Request Body (JSON):
+
+json
+Copy code
+
+{
+  "fullname": "John Doe",
+  "email": "john@example.com",
+  "password": "securepassword",
+  "vehicle": {
+    "color": "Blue",
+    "plate": "ABC-1234",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
+
+Field	      Type    	Required	    Validation
+fullname	  String	Yes	Minimum 3   characters
+email      	String	Yes	Must be a   valid email
+password	  String	Yes	Minimum 6   characters
+vehicle.color	String	Yes	Minimum 3  characters
+vehicle.plate	String	Yes	Minimum 3  characters
+vehicle.capacity Number	Yes	Minimum value of 1
+vehicle.vehicleType	String	Yes	One of car, motorcycle, auto
+
+
+Get Captain Profile
+Endpoint: GET /profile
+Description: Retrieves the profile of the authenticated captain.
+
+Headers:
+
+Key              	Value
+Authorization	   Bearer <JWT_TOKEN>
+
+ Update Captain Status
+Endpoint: PATCH /status
+Description: Update the status of a captain (e.g., active, inactive).
+
+Headers:
+
+Key	             Value
+Authorization	 Bearer <JWT_TOKEN>
+
+Request Body:
+
+{
+  "status": "active"
+}
+Field  	Type	 Required	  Validation
+status	String	Yes	    Must be either active or inactive  
+
+Logout Captain
+Endpoint: GET /logout
+Description: Logs out the captain and invalidates their token.
+
+Headers:
+
+Key	              Value
+Authorization  	Bearer <JWT_TOKEN>
